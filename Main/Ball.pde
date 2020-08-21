@@ -7,8 +7,6 @@ class Ball{
    this.vel = vel.copy();
  }
  
- 
- 
  void applyForce(PVector force){
    PVector acc = force.copy();
    vel.add(acc);
@@ -20,7 +18,17 @@ class Ball{
    PVector scaledNormal = PVector.mult(normal, scale);
    newVel.sub(scaledNormal);
    vel = newVel;
-   
+ }
+ 
+ void update() {
+   pos.add(vel); 
+ }
+ 
+ void draw() {
+   fill(0.2f);
+   stroke(0.0f);
+   strokeWeight(3);
+   circle(pos.x, pos.y, 20);   
  }
  
 }
