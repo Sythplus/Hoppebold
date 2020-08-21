@@ -29,4 +29,9 @@ class Ball{
    strokeWeight(3);
    circle(pos.x, pos.y, 20);   
  }
+
+  PVector getPos() {
+    return pos.copy();
+  }
+
 }

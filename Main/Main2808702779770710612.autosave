@@ -1,0 +1,11 @@
+PImage background;
+Ball testball = new Ball(new PVector(),new PVector());
+void setup() {
+  size(1200, 800);
+  background = loadImage("../Background.JPG");
+}
+
+void draw() {
+  image(background, 0, 0);
+  
+}
