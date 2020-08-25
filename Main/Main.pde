@@ -8,13 +8,13 @@ void setup() {
 
   size(1200, 800);
   background = loadImage("../Background.JPG");
-  for (int i = 0; i< 20; i++) {
-    balls.add(new Ball(new PVector(random(1200), random(600)), new PVector(random(10), random(2))));
-  }
+
   joints.add(new Joint(new PVector(0, 0))); 
   joints.add(new Joint(new PVector(1200, 0))); 
-  joints.add(new Joint(new PVector(1200, 600))); 
+  joints.add(new Joint(new PVector(1200, 700)));
+  joints.add(new Joint(new PVector(900, 700)));
   joints.add(new Joint(new PVector(600, 400)));
+  joints.add(new Joint(new PVector(400, 500)));
   joints.add(new Joint(new PVector(0, 600))); 
   for (int i = 0; i < joints.size(); i++) {
     walls.add(new WallPiece(joints.get((i+1) % joints.size()), joints.get(i)));
@@ -38,4 +38,15 @@ void draw() {
       b.checkCollision(balls.get(j));
     }
   }
+}
+
+void keyPressed(KeyEvent e) {
+  if(e.getKey() == ' '){
+    balls.add(new Ball(new PVector(random(1200), random(200)), new PVector(random(10), random(2))));
+  }
+  
+  if(e.getKey() == 'r'){
+    balls.clear();
+  }
+    
 }

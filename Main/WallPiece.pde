@@ -14,15 +14,22 @@ class WallPiece {
 
     if (b.getVel().dot(normal)< 0) {
       PVector bborder = b.getPos().sub(PVector.mult(normal, b.getRadius()));
-      PVector j2b = PVector.sub(bborder, j1.getPos());
-      if (normal.dot(j2b)< 0) {
-        if (PVector.sub(j1.getPos(), j2.getPos()).dot(j2b)> 0){
-          b.bounce(normal);
+      PVector j1tob = PVector.sub(bborder, j1.getPos());
+      PVector j2tob = PVector.sub(bborder, j2.getPos());
+     
+      PVector j1j2 = PVector.sub(j2.getPos(), j1.getPos());
+      PVector j2j1 = PVector.sub(j1.getPos(), j2.getPos());
+      
+      if (normal.dot(j1tob) < 0 &&
+      j1j2.dot(j1tob) > 0 &&
+      j2j1.dot(j2tob) > 0) {
+        
+        b.bounce(normal);
+        
       }
     }
   }
-}
-void draw() {
-  line(j1.getPos().x, j1.getPos().y, j2.getPos().x, j2.getPos().y);
-}
+  void draw() {
+    line(j1.getPos().x, j1.getPos().y, j2.getPos().x, j2.getPos().y);
+  }
 }
